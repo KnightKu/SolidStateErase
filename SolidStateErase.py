@@ -10,10 +10,10 @@ title='Directory to destroy')
 
 password = getpass.getpass()
 #proc = subprocess.Popen(
-#  ['sudo','-p','','-S','/etc/init.d/test','restart'],
+#  ['sudo','rm','','-rf',(path)],
 #   stdin=subprocess.PIPE)
 proc = subprocess.Popen(
-    ['sudo','rm','','-rf',(myPath+"/"),],
+    ['sudo','rm','','-rf',(myPath+"/")],
     stdin=subprocess.PIPE)
 proc.stdin.write(password+'\n')
 proc.stdin.close()
