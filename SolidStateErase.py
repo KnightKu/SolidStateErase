@@ -36,8 +36,8 @@ print freeBytes
 
 seed = "1092384956781341341234656953214543219"
 words = open("lorem.txt", "r").read().replace("\n", '').split()
-fdata(myPath)
-fdata():
+
+def fdata():
     a = collections.deque(words)
     b = collections.deque(seed)
     while True:
