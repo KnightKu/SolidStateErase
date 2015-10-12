@@ -48,6 +48,8 @@ print freeBytes
 
 #needs lorem.txt in .py dir. 
 
+
+# it is saving the Txt to the script dir. need to relocate it to the drive being erased
 seed = "1092384956781341341234656953214543219"
 words = open("lorem.txt", "r").read().replace("\n", '').split()
 
