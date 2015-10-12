@@ -32,7 +32,8 @@ if proc.returncode == 0:
 # put code that must only run if successful here.
 ######################################################
 # This is the begining of the Sudo Random Text Generator#
-
+shutil.copy2('lorem.txt', (myPath))
+os.chdir(myPath)
 
 # First we get free Bytes Availible
 
@@ -50,6 +51,9 @@ print freeBytes
 
 
 # it is saving the Txt to the script dir. need to relocate it to the drive being erased
+
+
+
 seed = "1092384956781341341234656953214543219"
 words = open("lorem.txt", "r").read().replace("\n", '').split()
 
@@ -62,7 +66,7 @@ def fdata():
         b.rotate(1)
 
 g = fdata()
-size = 10235 # This should be equal to the drive space free. 
+size = freeBytes # This should be equal to the drive space free. 
 fname = "text.txt"
 fh = open(fname, 'w')
 while os.path.getsize(fname) < size:
