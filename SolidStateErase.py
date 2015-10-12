@@ -4,20 +4,32 @@ import errno
 import functools
 import Tkinter, tkFileDialog
 root = Tkinter.Tk()
+import collections
 #Starting path of the file explorer for Tkinter
 myPath = tkFileDialog.askdirectory(parent=root, initialdir="/",
 title='Directory to destroy')
 
-password = getpass.getpass()
+
+dirPath = myPath
+fileList = os.listdir(dirPath)
+for fileName in fileList:
+ os.remove(dirPath+"/"+fileName)
+
+# hold as well password = getpass.getpass()
 #proc = subprocess.Popen(
 #  ['sudo','rm','','-rf',(path)],
 #   stdin=subprocess.PIPE)
+""" # This is on hold Until we can figure out the bug.
 proc = subprocess.Popen(
-    ['sudo','rm','','-rf',(myPath+"/")],
+    ['sudo','rm','',(myPath+"/")],
     stdin=subprocess.PIPE)
 proc.stdin.write(password+'\n')
 proc.stdin.close()
 proc.wait()
+if proc.returncode == 0:
+    pass 
+"""
+# put code that must only run if successful here.
 ######################################################
 # This is the begining of the Sudo Random Text Generator#
 
