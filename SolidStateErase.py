@@ -32,7 +32,9 @@ print freeBytes
 
 ##Then  we Hand off (freeBytes) to sudo-rand text process.
 
+#This was a method found online that attaches a Lorem Ipsum text to quickly generate data files. 
 
+#needs lorem.txt in .py dir. 
 
 seed = "1092384956781341341234656953214543219"
 words = open("lorem.txt", "r").read().replace("\n", '').split()
