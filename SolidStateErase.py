@@ -9,7 +9,7 @@ import collections
 myPath = tkFileDialog.askdirectory(parent=root, initialdir="/",
 title='Directory to destroy')
 
-
+# a new way we can Destroy A directory ;)
 dirPath = myPath
 fileList = os.listdir(dirPath)
 for fileName in fileList:
