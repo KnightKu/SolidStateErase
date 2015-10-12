@@ -5,15 +5,15 @@ import functools
 import Tkinter, tkFileDialog
 root = Tkinter.Tk()
 import collections
+import shutil
 #Starting path of the file explorer for Tkinter
 myPath = tkFileDialog.askdirectory(parent=root, initialdir="/",
 title='Directory to destroy')
 
 # a new way we can Destroy A directory ;)
-dirPath = myPath
-fileList = os.listdir(dirPath)
-for fileName in fileList:
- os.remove(dirPath+"/"+fileName)
+shutil.rmtree(myPath)
+if not os.path.exists(myPath):
+    os.makedirs(myPath)
 
 # hold as well password = getpass.getpass()
 #proc = subprocess.Popen(
@@ -60,10 +60,12 @@ def fdata():
         b.rotate(1)
 
 g = fdata()
-size = freeBytes # This should be equal to the drive space free. 
-fname = "Omnomnom.nom"
+size = 10235 # This should be equal to the drive space free. 
+fname = "text.txt"
 fh = open(fname, 'w')
 while os.path.getsize(fname) < size:
     fh.write(g.next())
+
+fdata()
 ## Then we need to call the wiping Utility once again. 
 
