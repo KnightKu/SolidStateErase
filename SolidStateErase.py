@@ -54,7 +54,7 @@ fname = "text.txt"
 fh = open(fname, 'w')
 while os.path.getsize(fname) < size:
     fh.write(g.next())
-
+#Once again Removing data from Directory. 
 shutil.rmtree(myPath)
 
 
