@@ -6,53 +6,36 @@ import Tkinter, tkFileDialog
 root = Tkinter.Tk()
 import collections
 import shutil
+
+
 #Starting path of the file explorer for Tkinter
 myPath = tkFileDialog.askdirectory(parent=root, initialdir="/",
 title='Directory to destroy')
 
-# a new way we can Destroy A directory ;)
+
+#First we delete the Path. 
 shutil.rmtree(myPath)
+
+# Then we regenerate the path. 
 if not os.path.exists(myPath):
     os.makedirs(myPath)
 
-# hold as well password = getpass.getpass()
-#proc = subprocess.Popen(
-#  ['sudo','rm','','-rf',(path)],
-#   stdin=subprocess.PIPE)
-""" # This is on hold Until we can figure out the bug.
-proc = subprocess.Popen(
-    ['sudo','rm','',(myPath+"/")],
-    stdin=subprocess.PIPE)
-proc.stdin.write(password+'\n')
-proc.stdin.close()
-proc.wait()
-if proc.returncode == 0:
-    pass 
-"""
-# put code that must only run if successful here.
-######################################################
-# This is the begining of the Sudo Random Text Generator#
+# We Copy the seed text over 
 shutil.copy2('lorem.txt', (myPath))
+
+# We change our working Directory to myPath
 os.chdir(myPath)
 
-# First we get free Bytes Availible
+# Then we obtain how much free space is on the drive and print as well as save to a varible.
 
 statvfs = os.statvfs(myPath)
 
 freeBytes = statvfs.f_frsize * statvfs.f_bfree
+print " It looks like you have %r Free bytes on this drive, I will Attempt to seed sudo-random text over it" %(freeBytes)
+ 
 
-print freeBytes
-
-##Then  we Hand off (freeBytes) to sudo-rand text process.
-
-#This was a method found online that attaches a Lorem Ipsum text to quickly generate data files. 
-
-#needs lorem.txt in .py dir. 
-
-
-# it is saving the Txt to the script dir. need to relocate it to the drive being erased
-
-
+               #############################
+# #######Filling up the drive with random seed data########
 
 seed = "1092384956781341341234656953214543219"
 words = open("lorem.txt", "r").read().replace("\n", '').split()
@@ -72,6 +55,5 @@ fh = open(fname, 'w')
 while os.path.getsize(fname) < size:
     fh.write(g.next())
 
-fdata()
-## Then we need to call the wiping Utility once again. 
+
 
