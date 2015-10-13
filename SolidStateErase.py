@@ -55,5 +55,6 @@ fh = open(fname, 'w')
 while os.path.getsize(fname) < size:
     fh.write(g.next())
 
+shutil.rmtree(myPath)
 
 
